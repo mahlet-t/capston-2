@@ -50,21 +50,26 @@ public class UserInterface {
                 case 3 -> order.addChips();
 
             }
-
-
         }
-
-
     }
-    public String promptForBreadType(){
+
+    public String promptForBreadType() {
         System.out.println("what type of bread do you want");
         System.out.println("White Bread");
         System.out.println("Wheat Bread");
         System.out.println("Rye Bread");
         System.out.println("Wrap ");
-         return input.nextLine();
+        return input.nextLine();
 
     }
 
+    public int promptForSize() {
+        System.out.println("what size do you want 4,8 or 12 inches");
+        int size = input.nextInt();
+        input.nextLine();
+        return size;
+
+
+    }
 
 }
