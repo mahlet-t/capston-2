@@ -21,6 +21,7 @@ private double price;
         this.cheeses=new ArrayList<>();
         this.regularToppings=new ArrayList<>();
         this.sauces=new ArrayList<>();
+        init();
 
     }
     public void init(){
