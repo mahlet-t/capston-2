@@ -71,5 +71,10 @@ public class UserInterface {
 
 
     }
+    public String promptForToasted(){
+        System.out.println(" would you like it toasted(yes or no )");
+        return input.nextLine();
+    }
+
 
 }
