@@ -56,6 +56,15 @@ public class UserInterface {
 
 
     }
-    public String
+    public String promptForBreadType(){
+        System.out.println("what type of bread do you want");
+        System.out.println("White Bread");
+        System.out.println("Wheat Bread");
+        System.out.println("Rye Bread");
+        System.out.println("Wrap ");
+         return input.nextLine();
+
+    }
+
 
 }
