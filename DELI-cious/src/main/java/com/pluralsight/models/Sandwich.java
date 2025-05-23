@@ -33,5 +33,21 @@ private double price;
         }
 
     }
+    public void addMeat(){
+
+
+
+    }
+    public void addCheese(){
+
+    }
+    public void addTopping(){
+
+    }
+    public void addSauce(){
+
+    }
+
+
 
 }
