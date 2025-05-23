@@ -1,8 +1,11 @@
 package com.pluralsight.ui;
 
 import com.pluralsight.models.Order;
+import com.pluralsight.models.Topping;
 import com.pluralsight.util.Utility;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -71,10 +74,41 @@ public class UserInterface {
 
 
     }
-    public String promptForToasted(){
+
+    public String promptForToasted() {
         System.out.println(" would you like it toasted(yes or no )");
         return input.nextLine();
     }
+    public List<Topping> promptForMeats(int size) {
+        List<Topping> meats=new ArrayList<>();
+        while (true) {
+            System.out.println("What type of meat do you want ");
+            System.out.println("Choose from the list of meat");
+            System.out.println(" or type done to finish");
+            System.out.println(".Steak\n.Ham\n.Salami\n.Roast Beef\n.Chicken\n.Bacon");
+            String listOfMeat = input.nextLine();
+            if (listOfMeat.equalsIgnoreCase("done")) {
+                Utility.loadingMessage("Exiting...");
+                break;
+            }
 
+            System.out.println("you want Extra Meat");
+            String extras = input.nextLine();
+            boolean isExtra=false;
+            if (extras.equalsIgnoreCase("yes")) {
+                isExtra = true;
+
+            } else if (extras.equalsIgnoreCase("No")) {
+              isExtra=false;
+
+            } else {
+                System.err.println("Invalid input ");
+            }
+
+            Topping topping = new Topping(listOfMeat,"Meat", isExtra, size);
+            meats.add(topping);
+        }
+return meats;
+    }
 
 }
