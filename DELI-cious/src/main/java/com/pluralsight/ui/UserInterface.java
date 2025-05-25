@@ -4,6 +4,7 @@ import com.pluralsight.models.Order;
 import com.pluralsight.models.Topping;
 import com.pluralsight.util.Utility;
 
+import javax.xml.namespace.QName;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -110,5 +111,54 @@ public class UserInterface {
         }
 return meats;
     }
+    public List<Topping> promptForCheese(int size){
+        List<Topping> cheese=new ArrayList<>();
+        while (true) {
+            boolean isExtra=false;
+            System.out.println("What type of cheese do you want ");
+            System.out.println("American\nProvolone\nCheddar\nSwiss");
+            System.out.println("or type done to finish");
+            String listOfCheese = input.nextLine();
+            if (listOfCheese.equalsIgnoreCase("done"))
+                break;
+            System.out.println("would you like Extra Cheese(yes or no)");
+            String extra=input.nextLine();
+            if (extra.equalsIgnoreCase("Yes")){
+                isExtra=true;
+            } else if (extra.equalsIgnoreCase("No")) {
+                isExtra=false;
+
+            }
+            Topping topping=new Topping("Cheese",listOfCheese,isExtra,size);
+            cheese.add(topping);
+
+
+        }
+        return cheese;
+
+
+    }
+    public List<Topping> promptForRegularToppings(int size){
+        List<Topping> regular=new ArrayList<>();
+        while (true) {
+
+            System.out.println("Add Toppings");
+            System.out.println("or type done to finish ");
+            System.out.printf("Lettuce %s10", "Peppers");
+            System.out.printf("Onions %s10", "Tomatoes");
+            System.out.printf("Jalapenos %s10", "Cucumbers");
+            System.out.printf(" Pickles %s10 ", "Guacamole %s10");
+            System.out.println("Mushrooms");
+            String regularTopping = input.nextLine();
+            if (regularTopping.equalsIgnoreCase("done")){
+                break;
+            }
+            Topping topping=new Topping(regularTopping,"Regular",false,size);
+            regular.add(topping);
+
+        }
+        return regular;
+    }
+    public List<Topping> promptForSauces()
 
 }
