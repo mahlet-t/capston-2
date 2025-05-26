@@ -145,7 +145,7 @@ return meats;
             System.out.println("Add Toppings");
             System.out.println("or type done to finish ");
             System.out.printf("Lettuce %s10", "Peppers");
-            System.out.printf("Onions %s10", "Tomatoes");
+            System.out.printf("%s10 %s10","Onions ", "Tomatoes");
             System.out.printf("Jalapenos %s10", "Cucumbers");
             System.out.printf(" Pickles %s10 ", "Guacamole %s10");
             System.out.println("Mushrooms");
@@ -159,6 +159,22 @@ return meats;
         }
         return regular;
     }
-    public List<Topping> promptForSauces()
-
+    public List<Topping> promptForSauces(int size) {
+        List<Topping> sauces = new ArrayList<>();
+        while (true) {
+            System.out.println("Add Sauces");
+            System.out.println("Type done to finish");
+            System.out.printf("%s-10 %s10", "Mayo", "Mustard");
+            System.out.printf("%s-10 %s10", "Ketchup", "Ranch");
+            System.out.printf("%s-10 %s10", "Thousand island", "Vinaigrette");
+            String sauce = input.nextLine();
+            if (sauce.equalsIgnoreCase("done")){
+                break;
+            }
+            Topping topping = new Topping(sauce, "Sauces", false, size);
+            sauces.add(topping);
+        }
+        return sauces;
+    }
+    public List<Topping> p
 }
