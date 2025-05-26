@@ -5,4 +5,11 @@ public class Chips {
     public double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return "Chips{" +
+                "price=" + price +
+                '}';
+    }
 }

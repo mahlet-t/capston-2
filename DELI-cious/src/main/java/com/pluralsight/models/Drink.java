@@ -19,4 +19,11 @@ public class Drink {
 
         return price;
     }
+
+    @Override
+    public String toString() {
+        return
+                "size='" + size + '\'' +
+                ", price=" + price ;
+    }
 }

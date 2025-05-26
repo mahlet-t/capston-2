@@ -12,6 +12,7 @@ private List<Topping>regularToppings;
 private List<Topping>sauces;
 private double price;
 
+
     public Sandwich(String bread, int size, boolean toasted) {
         this.bread = bread;
         this.size = size;
@@ -62,5 +63,10 @@ private double price;
     }
 
 
-
+    @Override
+    public String toString() {
+        return bread + " " + size +
+                "\" " + (toasted ? "Toasted":"Not Toasted")+
+                "$" + price;
+    }
 }
