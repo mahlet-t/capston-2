@@ -14,9 +14,9 @@ public class Drink {
         else if (size.equalsIgnoreCase("medium"))
             return 2.50;
         else if (size.equalsIgnoreCase("Large"))
-            return 3.00;
-        else return 0.00;
+            price=3.00;
 
 
+        return price;
     }
 }
