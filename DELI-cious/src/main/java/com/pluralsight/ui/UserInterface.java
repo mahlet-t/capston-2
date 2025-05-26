@@ -176,5 +176,23 @@ return meats;
         }
         return sauces;
     }
-    public List<Topping> p
+    public String promptForSides(){
+        System.out.println("what sides do you want");
+        System.out.println(".Au Jus\n .Sauce");
+      return input.nextLine();
+
+    }
+   public String promptForDrinks(){
+       System.out.println("what size do you want\n Small, Medium, Large");
+      return input.nextLine();
+
+   }
+   public String promptForChips(){
+       System.out.println("would you like to add chips(yes/no");
+       String chips=input.nextLine();
+       if (chips.equalsIgnoreCase("yes")){
+           return chips;
+       }
+       return chips;
+   }
 }

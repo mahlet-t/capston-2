@@ -1,6 +1,6 @@
 package com.pluralsight.models;
 
-public class Topping {
+public class Topping implements IOrderItem{
     private String name;
     private String type;
     private boolean isExtra;
@@ -50,5 +50,10 @@ public class Topping {
         return price;
 
 
+    }
+
+    @Override
+    public String getDetails() {
+        return "";
     }
 }

@@ -1,5 +1,4 @@
 package com.pluralsight.models;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,19 +32,33 @@ private double price;
         }
 
     }
-    public void addMeat(){
-
+    public void addMeat(Topping topping){
+        meats.add(topping);
+        price+= topping.getPrice();
 
 
     }
-    public void addCheese(){
+    public void addCheese(Topping topping){
+        cheeses.add(topping);
+        price+= topping.getPrice();
 
     }
-    public void addTopping(){
+    public void addTopping(Topping topping){
+        regularToppings.add(topping);
 
     }
-    public void addSauce(){
+    public void addSauce(Topping topping){
+        sauces.add(topping);
 
+
+    }
+    public double getPrice(){
+        return price;
+    }
+    public String getSummary(){
+        return "Bread"+bread+"\nSize"+size+
+                "\nToasted"+toasted+"\nMeats"+meats+"\nCheeses"+cheeses+
+                "\nToppings"+regularToppings+"\nSauces"+sauces+"\nPrice"+price;
     }
 
 
