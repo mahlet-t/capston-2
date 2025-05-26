@@ -49,9 +49,9 @@ public class UserInterface {
             int choose = input.nextInt();
             input.nextLine();
             switch (choose) {
-                case 1 -> order.addSandwich();
-                case 2 -> order.addDrink();
-                case 3 -> order.addChips();
+                case 1 ->
+                case 2 ->
+                case 3 ->
 
             }
         }
@@ -178,7 +178,7 @@ return meats;
     }
     public String promptForSides(){
         System.out.println("what sides do you want");
-        System.out.println(".Au Jus\n .Sauce");
+        System.out.println(".Au Jus\n .Sauce\n none");
       return input.nextLine();
 
     }
