@@ -1,11 +1,10 @@
 package com.pluralsight.models;
 
 public class Drink {
-    private String size;
-    private double price;
-
+    private final String size;
     public Drink(String size) {
         this.size = size;
+
 
     }
     public double getPrice(){
@@ -14,10 +13,10 @@ public class Drink {
         else if (size.equalsIgnoreCase("medium"))
             return 2.50;
         else if (size.equalsIgnoreCase("Large"))
-            price=3.00;
+            return 3.00;
 
 
-        return price;
+        return 0.00;
     }
 
     @Override

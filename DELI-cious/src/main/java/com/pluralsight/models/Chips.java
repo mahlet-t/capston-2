@@ -6,10 +6,5 @@ public class Chips {
         return price;
     }
 
-    @Override
-    public String toString() {
-        return "Chips{" +
-                "price=" + price +
-                '}';
-    }
+
 }

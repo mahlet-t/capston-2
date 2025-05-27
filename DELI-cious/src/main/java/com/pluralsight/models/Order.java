@@ -49,25 +49,30 @@ public class Order {
         return total ;
     }
 
-    public List<Sandwich> getSandwiches() {
-        return sandwiches;
-    }
-
-    public List<Drink> getDrinks() {
-        return drinks;
-    }
-
-    public List<Chips> getChipsList() {
-        return chipsList;
-    }
-
-
-    public String getSides() {
-        return sides;
-    }
-
 
     public String getOrderSummary () {
-        return "Sandwich"+sandwiches+"\nDrinks"+drinks+"\nChips"+chipsList+"\nSides"+sides+"\nTotalPrice"+getTotalPrice();
-    }
+            StringBuilder summary = new StringBuilder();
+            summary.append("Order Summary:\n");
+
+            for (Sandwich sandwich : sandwiches) {
+                summary.append(sandwich.getSummary()).append("\n");
+            }
+
+            for (Drink drink : drinks) {
+                summary.append("Drink: ").append(drink.toString()).append("\n");
+            }
+
+            for (Chips chips : chipsList) {
+                summary.append("Chips: $").append(chips.getPrice()).append("\n");
+            }
+
+            if (sides != null && !sides.equalsIgnoreCase("none")) {
+                summary.append("Sides: ").append(sides).append("\n");
+            }
+
+            summary.append("Total: $").append(getTotalPrice());
+
+            return summary.toString();
+        }
+
 }

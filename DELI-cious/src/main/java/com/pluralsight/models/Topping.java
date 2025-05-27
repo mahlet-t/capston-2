@@ -1,10 +1,10 @@
 package com.pluralsight.models;
 
 public class Topping {
-    private String name;
-    private String type;
-    private boolean isExtra;
-    private int size;
+    private final String name;
+    private final String type;
+    private final boolean isExtra;
+    private final int size;
 
     public Topping(String name, String type, boolean isExtra, int size) {
         this.name=name;
