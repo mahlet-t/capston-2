@@ -4,9 +4,9 @@ public class Drink {
     private String size;
     private double price;
 
-    public Drink(String size, double price) {
+    public Drink(String size) {
         this.size = size;
-        this.price = price;
+
     }
     public double getPrice(){
         if (size.equalsIgnoreCase("small"))
@@ -24,6 +24,6 @@ public class Drink {
     public String toString() {
         return
                 "size='" + size + '\'' +
-                ", price=" + price ;
+                ", price=" + getPrice() ;
     }
 }

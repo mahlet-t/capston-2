@@ -1,5 +1,6 @@
 package com.pluralsight.ui;
 import com.pluralsight.models.*;
+import com.pluralsight.util.ReceiptWriter;
 import com.pluralsight.util.Utility;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +9,6 @@ import java.util.Scanner;
 public class UserInterface {
 
     public Scanner input = new Scanner(System.in);
-
-    public UserInterface(Scanner input) {
-        this.input = input;
-    }
-
     public void displayHomeScreen() {
         Utility.printTitle("Welcome ");
         System.out.println("What you want to do");
@@ -36,8 +32,9 @@ public class UserInterface {
         while (true) {
             Order order = new Order();
             Sandwich sandwich=buildSandwich();
-            Drink drink=promptForDrinks();
-            Chips chips=promptForChips()
+            String drinkSize=promptForDrinks();
+            Drink drink=new Drink(drinkSize);
+            Chips chips=new Chips();
             System.out.println("choose from the following");
             System.out.println("1) Add sandwich");
             System.out.println("2) Add Drink");
@@ -50,9 +47,9 @@ public class UserInterface {
             switch (choose) {
                 case 1 ->order.addSandwich(sandwich);
                 case 2 ->order.addDrink(drink);
-                case 3 ->order.addChips(chips);
+                case 3 -> order.addChips(chips);
                 case 4->checkout();
-
+                case 0-> Utility.loadingMessage("Exiting...");
             }
         }
     }
@@ -191,15 +188,7 @@ return meats;
 
    }
    // Add drink
-   public String promptForChips(){
-       System.out.println("would you like to add chips(yes/no");
-       String chips=input.nextLine();
-       if (chips.equalsIgnoreCase("yes")){
-           return chips;
-       }
 
-       return chips;
-   }
    public Sandwich buildSandwich() {
        String bread = promptForBreadType();
        int size = promptForSize();
@@ -233,13 +222,17 @@ return meats;
        int choose= input.nextInt();
        input.nextLine();
        if (choose==1){
-           System.out.println();
+           ReceiptWriter.saveReceipt(order);
+
+
        } else if (choose==2) {
            System.out.println("Order cancelled.");
            Utility.clearScreen();
            Utility.loadingMessage("Returning to home screen...");
 
-
+       }
+       else {
+           System.out.println("Invalid choice");
        }
 
 
