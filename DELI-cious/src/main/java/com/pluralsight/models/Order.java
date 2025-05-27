@@ -14,6 +14,8 @@ public class Order {
         this.chipsList=new ArrayList<>();
     }
 
+
+
     public void addSandwich(Sandwich sandwich){
         sandwiches.add(sandwich);
 
@@ -65,7 +67,7 @@ public class Order {
     }
 
 
-    public String getOrderSummaryMethod () {
+    public String getOrderSummary () {
         return "Sandwich"+sandwiches+"\nDrinks"+drinks+"\nChips"+chipsList+"\nSides"+sides+"\nTotalPrice"+getTotalPrice();
     }
 }

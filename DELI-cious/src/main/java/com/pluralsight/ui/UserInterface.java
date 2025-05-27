@@ -1,10 +1,6 @@
 package com.pluralsight.ui;
-
-import com.pluralsight.models.Order;
-import com.pluralsight.models.Topping;
+import com.pluralsight.models.*;
 import com.pluralsight.util.Utility;
-
-import javax.xml.namespace.QName;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -39,6 +35,9 @@ public class UserInterface {
     public void displayOrderScreen() {
         while (true) {
             Order order = new Order();
+            Sandwich sandwich=buildSandwich();
+            Drink drink=promptForDrinks();
+            Chips chips=promptForChips()
             System.out.println("choose from the following");
             System.out.println("1) Add sandwich");
             System.out.println("2) Add Drink");
@@ -49,9 +48,10 @@ public class UserInterface {
             int choose = input.nextInt();
             input.nextLine();
             switch (choose) {
-                case 1 ->
-                case 2 ->
-                case 3 ->
+                case 1 ->order.addSandwich(sandwich);
+                case 2 ->order.addDrink(drink);
+                case 3 ->order.addChips(chips);
+                case 4->checkout();
 
             }
         }
@@ -182,17 +182,67 @@ return meats;
       return input.nextLine();
 
     }
+    String side=promptForSides();
+
+
    public String promptForDrinks(){
        System.out.println("what size do you want\n Small, Medium, Large");
       return input.nextLine();
 
    }
+   // Add drink
    public String promptForChips(){
        System.out.println("would you like to add chips(yes/no");
        String chips=input.nextLine();
        if (chips.equalsIgnoreCase("yes")){
            return chips;
        }
+
        return chips;
    }
+   public Sandwich buildSandwich() {
+       String bread = promptForBreadType();
+       int size = promptForSize();
+       boolean toasted = promptForToasted().equalsIgnoreCase("Yes");
+       Sandwich sandwich = new Sandwich(bread, size, toasted);
+       List<Topping> meats = promptForMeats(size);
+       for (Topping meat : meats) {
+           sandwich.addMeat(meat);
+       }
+       List<Topping> cheeses = promptForCheese(size);
+       for (Topping cheese : cheeses) {
+           sandwich.addCheese(cheese);
+       }
+       List<Topping> regularToppings = promptForRegularToppings(size);
+       for (Topping regular : regularToppings) {
+           sandwich.addTopping(regular);
+       }
+       List<Topping> sauces = promptForSauces(size);
+       for (Topping sauce : sauces) {
+           sandwich.addSauce(sauce);
+       }
+       return sandwich;
+   }
+
+   public void checkout(){
+       Order order=new Order();
+       order.getOrderSummary();
+
+       System.out.println("1)Confirm");
+       System.out.println("2) Cancel");
+       int choose= input.nextInt();
+       input.nextLine();
+       if (choose==1){
+           System.out.println();
+       } else if (choose==2) {
+           System.out.println("Order cancelled.");
+           Utility.clearScreen();
+           Utility.loadingMessage("Returning to home screen...");
+
+
+       }
+
+
+   }
+
 }
