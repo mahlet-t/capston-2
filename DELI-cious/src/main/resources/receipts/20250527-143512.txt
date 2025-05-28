@@ -1,0 +1,22 @@
+Order Summary:
+Bread: white bread
+Size: 8
+Toasted: Yes
+Meats:
+- steak (2.0)
+- bacon (2.0)
+Cheeses:
+- Cheese (0.0)
+Toppings:
+- pickles
+Sauces:
+Price: $11.0
+
+........................................
+Drink: size='small', price=2.0
+..........................................
+Chips: $1.5
+...........................................
+Sides: au jus
+.............................................
+Total: $14.5

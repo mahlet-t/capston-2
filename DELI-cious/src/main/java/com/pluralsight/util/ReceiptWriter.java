@@ -16,6 +16,7 @@ public class ReceiptWriter {
            BufferedWriter writer=new BufferedWriter(new FileWriter(filename));
            writer.write(order.getOrderSummary());
            System.out.println("Receipt created");
+           writer.close();
        }catch (Exception e){
            System.err.println("Error"+e.getMessage());
 

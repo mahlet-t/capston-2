@@ -64,9 +64,34 @@ public class Sandwich {
     }
 
     public String getSummary() {
-        return "Bread" + bread + "\nSize" + size +
-                "\nToasted" + toasted + "\nMeats" + meats + "\nCheeses" + cheeses +
-                "\nToppings" + regularToppings + "\nSauces" + sauces + "\nPrice" + price;
-    }
+            StringBuilder summary = new StringBuilder();
+            summary.append("Bread: ").append(bread).append("\n");
+            summary.append("Size: ").append(size).append("\n");
+            summary.append("Toasted: ").append(toasted ? "Yes" : "No").append("\n");
+
+            summary.append("Meats:\n");
+            for (Topping meat : meats) {
+                summary.append("- ").append(meat.getName()).append(" (").append(meat.getPrice()).append(")\n");
+            }
+
+            summary.append("Cheeses:\n");
+            for (Topping cheese : cheeses) {
+                summary.append("- ").append(cheese.getName()).append(" (").append(cheese.getPrice()).append(")\n");
+            }
+
+            summary.append("Toppings:\n");
+            for (Topping regular : regularToppings) {
+                summary.append("- ").append(regular.getName()).append("\n");
+            }
+
+            summary.append("Sauces:\n");
+            for (Topping sauce : sauces) {
+                summary.append("- ").append(sauce.getName()).append("\n");
+            }
+
+            summary.append("Price: $").append(price).append("\n");
+
+            return summary.toString();
+        }
 
 }

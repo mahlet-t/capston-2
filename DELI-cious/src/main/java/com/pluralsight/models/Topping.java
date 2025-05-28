@@ -6,6 +6,10 @@ public class Topping {
     private final boolean isExtra;
     private final int size;
 
+    public String getName() {
+        return name;
+    }
+
     public Topping(String name, String type, boolean isExtra, int size) {
         this.name=name;
         this.type = type;

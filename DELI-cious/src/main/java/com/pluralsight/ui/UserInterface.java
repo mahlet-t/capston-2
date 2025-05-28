@@ -5,7 +5,6 @@ import com.pluralsight.util.Utility;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 public class UserInterface {
 
     public Scanner input = new Scanner(System.in);
@@ -13,7 +12,7 @@ public class UserInterface {
     public void displayHomeScreen() {
         Utility.printTitle("Welcome ");
         System.out.println("What you want to do");
-        System.out.println("1) new order");
+        System.out.println("🧺"+"1) new order");
         System.out.println("0) Exit");
         int choose = input.nextInt();
         input.nextLine();
@@ -26,7 +25,6 @@ public class UserInterface {
             }
         }
     }
-
     public void displayOrderScreen() {
         Order order = new Order();
         boolean keepGoing=true;
@@ -36,7 +34,7 @@ public class UserInterface {
             System.out.println("2) Add Drink");
             System.out.println("3) Add chips");
             System.out.println("4) Checkout");
-            System.out.println("0) Cancel Order");
+            System.out.println("0) Cancel Order and Exit");
             int choose = input.nextInt();
             input.nextLine();
             switch (choose) {
@@ -63,35 +61,62 @@ public class UserInterface {
                 default -> System.out.println("Invalid choice. please try again ");
             }
         }
+        displayHomeScreen();
     }
     public String promptForBreadType() {
-        System.out.println("what type of bread do you want");
-        System.out.println("White Bread");
-        System.out.println("Wheat Bread");
-        System.out.println("Rye Bread");
-        System.out.println("Wrap ");
-        return input.nextLine();
-    }
-    public int promptForSize() {
-        System.out.println("what size do you want 4,8 or 12 inches");
-        int size = input.nextInt();
-        input.nextLine();
-        return size;
+        List<String> validBread= List.of("white bread","wheat bread","rye bread","wrap","done");
+       while (true) {
+           System.out.println("what type of bread do you want");
+           System.out.println("White Bread");
+           System.out.println("Wheat Bread");
+           System.out.println("Rye Bread");
+           System.out.println("Wrap ");
+           String userInput= input.nextLine().toLowerCase();
+           if (validBread.contains(userInput)){
+               return userInput;
+           } else {
+               System.out.println("Invalid choice. please try again ");
+           }
+       }
 
     }
+    public int promptForSize() {
+        while (true) {
+            System.out.println("what size do you want 4,8 or 12 inches");
+            int size = input.nextInt();
+            input.nextLine();
+            if (size==4||size==8||size==12){
+            return size;
+            }else {
+                System.out.println("Invalid choice. please try again");
+            }
+        }
+    }
     public String promptForToasted() {
-        System.out.println(" would you like it toasted(yes or no )");
-        return input.nextLine();
+        while (true) {
+            System.out.println(" would you like it toasted(yes or no )");
+            String toasted=input.nextLine();
+            if(toasted.equalsIgnoreCase("Yes")||toasted.equalsIgnoreCase("No")){
+            return toasted;
+            }else {
+                System.out.println("Invalid choice. please try again");
+            }
+        }
     }
 
     public List<Topping> promptForMeats(int size) {
         List<Topping> meats = new ArrayList<>();
+        List<String> validMeats=List.of("steak","ham","salami","roast beef","Chicken","Bacon","done");
         while (true) {
             System.out.println("What type of meat do you want ");
             System.out.println("Choose from the list of meat");
             System.out.println(" or type done to finish");
             System.out.println(".Steak\n.Ham\n.Salami\n.Roast Beef\n.Chicken\n.Bacon");
             String listOfMeat = input.nextLine();
+            if (!validMeats.contains(listOfMeat.toLowerCase())) {
+                System.err.println("Invalid meat type ");
+                continue;
+            }
             if (listOfMeat.equalsIgnoreCase("done")) {
                 Utility.loadingMessage("Exiting...");
                 break;
@@ -108,18 +133,25 @@ public class UserInterface {
 
             Topping topping = new Topping(listOfMeat, "Meat", isExtra, size);
             meats.add(topping);
+
+
         }
         return meats;
     }
 
     public List<Topping> promptForCheese(int size) {
         List<Topping> cheese = new ArrayList<>();
+        List<String> validCheese=List.of("american","provolone","cheddar","swiss","done");
         while (true) {
             boolean isExtra = false;
             System.out.println("What type of cheese do you want ");
             System.out.println("American\nProvolone\nCheddar\nSwiss");
             System.out.println("or type done to finish");
             String listOfCheese = input.nextLine();
+            if (!validCheese.contains(listOfCheese.toLowerCase())){
+                System.err.println("Invalid Cheese type");
+                continue;
+            }
             if (listOfCheese.equalsIgnoreCase("done"))
                 break;
             System.out.println("would you like Extra Cheese(yes or no)");
@@ -142,16 +174,21 @@ public class UserInterface {
 
     public List<Topping> promptForRegularToppings(int size) {
         List<Topping> regular = new ArrayList<>();
+        List<String> validRegular=List.of("lettuce","peppers","onions","tomatoes","jalapenos","cucumbers","pickles","Guacamole","Mushrooms","done");
         while (true) {
 
             System.out.println("Add Toppings");
             System.out.println("or type done to finish ");
-            System.out.printf("Lettuce %s10", "Peppers");
-            System.out.printf("%s10 %s10", "Onions ", "Tomatoes");
-            System.out.printf("Jalapenos %s10", "Cucumbers");
-            System.out.printf(" Pickles %s10 ", "Guacamole %s10");
+            System.out.println("Lettuce, Peppers");
+            System.out.println("Onions, Tomatoes");
+            System.out.println("Jalapenos,Cucumbers");
+            System.out.println(" Pickles, Guacamole ");
             System.out.println("Mushrooms");
             String regularTopping = input.nextLine();
+            if (!validRegular.contains(regularTopping.toLowerCase())){
+                System.err.println("Invalid choice.");
+                continue;
+            }
             if (regularTopping.equalsIgnoreCase("done")) {
                 break;
             }
@@ -164,13 +201,18 @@ public class UserInterface {
 
     public List<Topping> promptForSauces(int size) {
         List<Topping> sauces = new ArrayList<>();
+        List<String> validSauce=List.of("mayo","mustard","ketchup","ranch","thousand island","vinaigrette","done");
         while (true) {
             System.out.println("Add Sauces");
             System.out.println("Type done to finish");
-            System.out.printf("%s-10 %s10", "Mayo", "Mustard");
-            System.out.printf("%s-10 %s10", "Ketchup", "Ranch");
-            System.out.printf("%s-10 %s10", "Thousand island", "Vinaigrette");
+            System.out.println("Mayo, Mustard");
+            System.out.println( "Ketchup, Ranch");
+            System.out.println("Thousand island, Vinaigrette");
             String sauce = input.nextLine();
+            if (!validSauce.contains(sauce.toLowerCase())){
+                System.err.println("Invalid choice");
+                continue;
+            }
             if (sauce.equalsIgnoreCase("done")) {
                 break;
             }
@@ -182,15 +224,22 @@ public class UserInterface {
 
 
     public String promptForDrinks() {
-        System.out.println("what size do you want\n Small, Medium, Large");
-        return input.nextLine();
+        while (true) {
+            System.out.println("what size do you want\n Small, Medium, Large");
+            String size=input.nextLine();
+            if (size.equalsIgnoreCase("small")||size.equalsIgnoreCase("medium")||size.equalsIgnoreCase("large")){
+                return size;
+            }else {
+                System.err.println("Invalid Choice");
+            }
 
+        }
     }
 
     public String promptForSides() {
         while (true) {
             System.out.println("what sides do you want ");
-            System.out.println(". Au jus\n . Sauce\n.None");
+            System.out.println("* Au jus\n * Sauce\n*None");
             String sides = input.nextLine();
             if (sides.equalsIgnoreCase("Au jus") || sides.equalsIgnoreCase("sauce") || sides.equalsIgnoreCase("None")) {
                 return sides;

@@ -56,18 +56,22 @@ public class Order {
 
             for (Sandwich sandwich : sandwiches) {
                 summary.append(sandwich.getSummary()).append("\n");
+                summary.append("........................................\n");
             }
 
             for (Drink drink : drinks) {
                 summary.append("Drink: ").append(drink.toString()).append("\n");
+                summary.append("..........................................\n");
             }
 
             for (Chips chips : chipsList) {
                 summary.append("Chips: $").append(chips.getPrice()).append("\n");
+                summary.append("...........................................\n");
             }
 
             if (sides != null && !sides.equalsIgnoreCase("none")) {
                 summary.append("Sides: ").append(sides).append("\n");
+                summary.append(".............................................\n");
             }
 
             summary.append("Total: $").append(getTotalPrice());
