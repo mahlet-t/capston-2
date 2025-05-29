@@ -1,21 +1,29 @@
+/**
+ * Represents a topping for a sandwich (such as meat, cheese, or regular toppings).
+ * Handles the calculation of the topping price based on size and whether it's extra.
+ */
 package com.pluralsight.models;
-
 public class Topping {
     private final String name;
     private final String type;
     private final boolean isExtra;
     private final int size;
 
-    public String getName() {
-        return name;
-    }
-
+   // Constructor to initialize a topping.
     public Topping(String name, String type, boolean isExtra, int size) {
         this.name=name;
         this.type = type;
         this.isExtra = isExtra;
         this.size = size;
     }
+    public String getName() {
+        return name;
+    }
+
+    /** Calculates and returns the price of
+     * the topping base on its type,size,and if it's extra
+     * return the price of the topping
+     */
     public double getPrice() {
         double price = 0;
         if (type.equalsIgnoreCase("Meat")) {

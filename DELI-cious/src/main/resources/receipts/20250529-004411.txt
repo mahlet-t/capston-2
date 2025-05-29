@@ -1,0 +1,34 @@
+Order Summary:
+Bread: white bread
+Size: 4
+Toasted: Yes
+Meats:
+- ham (1.0)
+Cheeses:
+- Cheese (0.0)
+Toppings:
+- lettuce
+- pickles
+Sauces:
+- mayo
+Price: $6.5
+
+........................................
+Bread: white bread
+Size: 8
+Toasted: Yes
+Meats:
+- Bacon (2.0)
+Cheeses:
+- Cheddar (0.0)
+Toppings:
+- Lettuce
+- tomato
+Sauces:
+- Ranch
+Price: $16.0
+
+........................................
+Drink: size='small', price=2.0
+..........................................
+Total: $24.5

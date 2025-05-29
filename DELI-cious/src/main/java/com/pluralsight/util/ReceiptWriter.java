@@ -1,3 +1,7 @@
+/**
+ * Utility class responsible for saving order receipts.
+ * It writes the order summary to a timestamped file in the receipt directory.
+ */
 package com.pluralsight.util;
 
 import com.pluralsight.models.Order;
@@ -8,6 +12,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ReceiptWriter {
+    /**
+     * Saves the provided order summary to a receipt file with a timestamped filename.
+     * @param order the Order object containing the summary details to be saved
+     */
     public static void saveReceipt(Order order){
        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
        LocalDateTime now=LocalDateTime.now();

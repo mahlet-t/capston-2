@@ -1,0 +1,18 @@
+Order Summary:
+Bread: white bread
+Size: 8
+Toasted: Yes
+Meats:
+- Bacon (2.0)
+- salami (2.0)
+Cheeses:
+- Cheddar (0.0)
+Toppings:
+- Lettuce
+- tomato
+Sauces:
+- Ranch
+Price: $18.0
+
+........................................
+Total: $18.0
