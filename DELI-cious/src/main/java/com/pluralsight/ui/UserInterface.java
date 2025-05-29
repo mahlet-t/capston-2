@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    public Scanner input = new Scanner(System.in);
+    private final Scanner input = new Scanner(System.in);
 
     /**
      * Displays the home screen to the user, offering options to start a new order or exit
