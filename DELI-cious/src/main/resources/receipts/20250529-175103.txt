@@ -1,0 +1,13 @@
+Order Summary:
+Bread: white bread
+Size: 4
+Toasted: No
+Meats:
+- steak (1.0)
+Cheeses:
+Toppings:
+Sauces:
+Price: $6.5
+
+........................................
+Total: $6.5

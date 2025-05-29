@@ -23,10 +23,10 @@ public class ReceiptWriter {
        try {
            BufferedWriter writer=new BufferedWriter(new FileWriter(filename));
            writer.write(order.getOrderSummary());
-           System.out.println("Receipt created");
+           Utility.printSuccess("Receipt created");
            writer.close();
        }catch (Exception e){
-           System.err.println("Error"+e.getMessage());
+           Utility.printError("Error"+e.getMessage());
 
        }
 

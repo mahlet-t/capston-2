@@ -40,10 +40,9 @@ public class Sandwich {
 
     }
 // Adds a meat topping and updates the price
-    public void addMeat(Topping topping) {
+    public void addMeat(Topping topping){
         meats.add(topping);
-        price += topping.getPrice();
-
+        price+=topping.getPrice();
 
     }
 // Adds a cheese topping and updates the price
@@ -59,9 +58,9 @@ public class Sandwich {
     }
     //Removes a meat topping and updates the price
     public void removeMeat(Topping topping){
-        boolean removed =meats.remove(topping);
+        boolean removed=meats.remove(topping);
         if (removed){
-        price-=topping.getPrice();
+            price-=topping.getPrice();
         }
     }
     //Remove a cheese topping and updates the price

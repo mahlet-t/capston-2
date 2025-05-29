@@ -210,7 +210,7 @@ public class UserInterface {
                 System.out.println("Invalid input");
 
             }
-            Topping topping = new Topping("Cheese", listOfCheese, isExtra, size);
+            Topping topping = new Topping(listOfCheese,"Cheese", isExtra, size);
             cheese.add(topping);
 
 
@@ -241,7 +241,7 @@ public class UserInterface {
             System.out.println("type done to finish ");
             String regularTopping = input.nextLine();
             if (!validRegular.contains(regularTopping.toLowerCase())) {
-                System.err.println("Invalid choice.");
+                Utility.printError("Invalid choice.");
                 continue;
             }
             if (regularTopping.equalsIgnoreCase("done")) {
@@ -266,13 +266,13 @@ public class UserInterface {
         List<String> validSauce = List.of("mayo", "mustard", "ketchup", "ranch", "thousand island", "vinaigrette", "done");
         while (true) {
             System.out.println("Add Sauces");
-            System.out.println("Mayo, Mustard");
-            System.out.println("Ketchup, Ranch");
-            System.out.println("Thousand island, Vinaigrette");
+            System.out.println("Mayo,             Mustard");
+            System.out.println("Ketchup,             Ranch");
+            System.out.println("Thousand island,  Vinaigrette");
             System.out.println("Type done to finish");
             String sauce = input.nextLine();
             if (!validSauce.contains(sauce.toLowerCase())) {
-                System.err.println("Invalid choice");
+                Utility.printError("Invalid choice");
                 continue;
             }
             if (sauce.equalsIgnoreCase("done")) {
@@ -297,7 +297,7 @@ public class UserInterface {
             if (size.equalsIgnoreCase("small") || size.equalsIgnoreCase("medium") || size.equalsIgnoreCase("large")) {
                 return size;
             } else {
-                System.err.println("Invalid Choice");
+                Utility.printError("Invalid Choice");
             }
 
         }
@@ -317,7 +317,7 @@ public class UserInterface {
             if (sides.equalsIgnoreCase("Au jus") || sides.equalsIgnoreCase("sauce") || sides.equalsIgnoreCase("None")) {
                 return sides;
             } else {
-                System.out.println("Invalid choice. ");
+                Utility.printError("Invalid choice. ");
             }
         }
     }
@@ -369,7 +369,7 @@ public class UserInterface {
             try {
                 choice = input.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. please enter number only");
+                Utility.printError("Invalid input. please enter number only");
                 input.nextLine();
                 continue;
             }
@@ -385,7 +385,7 @@ public class UserInterface {
                     int addChoice;
                      try {
                           addChoice = input.nextInt(); }catch (InputMismatchException e){
-                         System.out.println("Invalid input. please enter number only");
+                         Utility.printError("Invalid input. please enter number only");
                          input.nextLine();
                          continue;
                      }
@@ -417,7 +417,7 @@ public class UserInterface {
                         break;
 
                     } else {
-                        System.err.println("Invalid choice");
+                        Utility.printError("Invalid choice");
                     }
 
 
@@ -464,11 +464,11 @@ public class UserInterface {
                         }
                     }
                     if (removed) {
-                        System.out.println("Removed: " + toppingToRemove);
+                       Utility.printSuccess("Removed: " + toppingToRemove);
 
 
                     } else {
-                        System.out.println("Topping not found:" + toppingToRemove);
+                        Utility.printError("Topping not found:" + toppingToRemove);
                     }
 
                 }
@@ -478,7 +478,7 @@ public class UserInterface {
                 break;
 
             } else {
-                System.err.println("Invalid choice");
+               Utility.printError("Invalid choice");
 
             }
         }
@@ -509,16 +509,16 @@ public class UserInterface {
                 order.setSides(sides);
             } else if (choose == 2) {
                 while (true) {
-                    System.out.println("""
-                            1) Philly Cheese Steak
+                    System.out.println( "1) Philly Cheese Steak");
+                    Utility.printOptions("""
                             o  8" white bread
                             "o Steak
                             "o American Cheese
                             "o Peppers
                             "o Mayo
                             "o Toasted""");
-                    System.out.println("""
-                            2) BLT"
+                    System.out.println("  2) BLT");
+                    Utility.printOptions("""
                             "o 8" white bread
                             "o Bacon
                             "o Cheddar
@@ -531,7 +531,7 @@ public class UserInterface {
                     try {
                         signatureChoice = input.nextInt();
                     } catch (InputMismatchException e) {
-                        System.out.println("Invalid input. please Enter a number");
+                       Utility.printError("Invalid input. please Enter a number");
                         input.nextLine();// clear bad input
                         continue;// back to start of loop
                     }
@@ -542,10 +542,10 @@ public class UserInterface {
                     } else if (signatureChoice == 2) {
                         signatureSandwich = SignatureSandwich.createBLT();
                     } else if (signatureChoice == 3) {
-                        Utility.loadingMessage("Loading");
+                        Utility.loadingMessage("Loading....");
                         break;
                     } else {
-                        System.err.println("Invalid choice");
+                       Utility.printError("Invalid choice");
                     }
                     customizeSignatureSandwich(signatureSandwich);
                     order.addSandwich(signatureSandwich);
@@ -554,7 +554,7 @@ public class UserInterface {
             } else if (choose == 3) {
                 break;
             } else {
-                System.out.println("Invalid choice");
+                Utility.printError("Invalid choice");
             }
         }
     }
@@ -579,13 +579,14 @@ public class UserInterface {
             ReceiptWriter.saveReceipt(order);
 
 
+
         } else if (choose == 2) {
-            System.out.println("Order cancelled.");
+            Utility.printSuccess("Order cancelled.");
             Utility.clearScreen();
             Utility.loadingMessage("Returning to home screen...");
 
         } else {
-            System.out.println("Invalid choice");
+            Utility.printError("Invalid choice");
         }
 
 
