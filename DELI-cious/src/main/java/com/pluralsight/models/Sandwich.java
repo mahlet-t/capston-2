@@ -52,15 +52,50 @@ public class Sandwich {
         regularToppings.add(topping);
 
     }
+    public void removeMeat(Topping topping){
+        boolean removed =meats.remove(topping);
+        if (removed){
+        price-=topping.getPrice();
+        }
+    }
+    public void removeCheese(Topping topping){
+        boolean removed=cheeses.remove(topping);
+        if (removed){
+            price-=topping.getPrice();
+        }
+    }
+    public void removeTopping(Topping topping){
+        regularToppings.remove(topping);
+    }
+
 
     public void addSauce(Topping topping) {
         sauces.add(topping);
 
 
     }
+    public void removeSauce(Topping topping){
+        sauces.remove(topping);
+    }
 
     public double getPrice() {
         return price;
+    }
+
+    public List<Topping> getMeats() {
+        return meats;
+    }
+
+    public List<Topping> getCheeses() {
+        return cheeses;
+    }
+
+    public List<Topping> getRegularToppings() {
+        return regularToppings;
+    }
+
+    public List<Topping> getSauces() {
+        return sauces;
     }
 
     public String getSummary() {
