@@ -16,6 +16,7 @@ public class Drink {
 
     /**
      * Calculate and returns the price of the drink based on its size
+     *
      * @return the price of the drink
      */
     public double getPrice() {

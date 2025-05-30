@@ -9,8 +9,6 @@ public class SignatureSandwich extends Sandwich{
     public SignatureSandwich(String bread, int size, boolean toasted) {
         super(bread,size , toasted);
         init();
-
-
     }
 /**
  * Creates a BLT signature sandwich with preset toppings.
@@ -22,7 +20,6 @@ public class SignatureSandwich extends Sandwich{
         blt.addTopping(new Topping("Lettuce","Regular Topping",false,8));
         blt.addTopping(new Topping("tomato","Regular Topping",false,8));
         blt.addSauce(new Topping("Ranch","sauces",false,8));
-
         return blt;
     }
     /**

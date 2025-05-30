@@ -26,7 +26,7 @@ public class UserInterface {
     public void displayHomeScreen() {
         Utility.printTitle("Welcome to Deli-cious ");
         System.out.println("What would you like to do ");
-        System.out.println("1) Start a  new order");
+        System.out.println("1) Start a new order");
         System.out.println("0) Exit");
         int choose = input.nextInt();
         input.nextLine();
@@ -97,14 +97,14 @@ public class UserInterface {
             if (validBread.contains(userInput)) {
                 return userInput;
             } else {
-                System.out.println("Invalid choice. please try again ");
+                Utility.printError("Invalid choice. please try again ");
             }
         }
 
     }
 
     /**
-     * Prompts the user to choose a bread size, with validation
+     * Prompts the user to choose a bread size
      *
      * @return chosen size
      */
@@ -151,11 +151,11 @@ public class UserInterface {
         while (true) {
             System.out.println("What type of meat would you like ");
             System.out.println(" please Choose from the following meat");
-            System.out.println(".Steak\n.Ham\n.Salami\n.Roast Beef\n.Chicken\n.Bacon");
+            Utility.printOptions(".Steak\n.Ham\n.Salami\n.Roast Beef\n.Chicken\n.Bacon");
             System.out.println(" done to finish");
             String listOfMeat = input.nextLine();
             if (!validMeats.contains(listOfMeat.toLowerCase())) {
-                System.err.println("Invalid meat type ");
+                Utility.printError("Invalid meat type ");
                 continue;
             }
             if (listOfMeat.equalsIgnoreCase("done")) {
@@ -169,7 +169,7 @@ public class UserInterface {
                 isExtra = true;
 
             } else if (!extras.equalsIgnoreCase("No")) {
-                System.err.println("Invalid input ");
+                Utility.printError("Invalid input ");
             }
 
             Topping topping = new Topping(listOfMeat, "Meat", isExtra, size);
@@ -207,7 +207,7 @@ public class UserInterface {
             if (extra.equalsIgnoreCase("Yes")) {
                 isExtra = true;
             } else if (!extra.equalsIgnoreCase("No")) {
-                System.out.println("Invalid input");
+                Utility.printError("Invalid input");
 
             }
             Topping topping = new Topping(listOfCheese,"Cheese", isExtra, size);
@@ -384,7 +384,8 @@ public class UserInterface {
                     System.out.println("5) Done");
                     int addChoice;
                      try {
-                          addChoice = input.nextInt(); }catch (InputMismatchException e){
+                          addChoice = input.nextInt();
+                     }catch (InputMismatchException e){
                          Utility.printError("Invalid input. please enter number only");
                          input.nextLine();
                          continue;
@@ -532,10 +533,10 @@ public class UserInterface {
                         signatureChoice = input.nextInt();
                     } catch (InputMismatchException e) {
                        Utility.printError("Invalid input. please Enter a number");
-                        input.nextLine();// clear bad input
+                        input.nextLine();// skip over the invalid input
                         continue;// back to start of loop
                     }
-                    input.nextLine();//clear \n
+                    input.nextLine();//clear the left over \n
                     SignatureSandwich signatureSandwich = null;
                     if (signatureChoice == 1) {
                         signatureSandwich = SignatureSandwich.createPhillyCheeseSteak();

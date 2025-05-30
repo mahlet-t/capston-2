@@ -60,13 +60,9 @@ public class Topping {
             }
         }
         return price;
-
-
     }
-
     @Override
     public String toString() {
-        return "Topping{" + name + '\'' + type + '\'' + isExtra + size +
-                '}';
+        return   name;
     }
 }

@@ -93,7 +93,7 @@ public class Order {
 
             summary.append("Total: $").append(getTotalPrice());
 
-            return summary.toString();
+            return summary.toString();//convert into plain String
         }
 
 }
